@@ -7,12 +7,13 @@
  */
 int _help(char **args)
 {
+int i;
+
 if (args[2] == NULL)
 {
 fprintf(stderr, "rktsh: expected no argument to \"help\"\n");
 }
 
-int i;
 printf("RocKeT SHell - RKTSH\n");
 printf("Type program names and arguments, and hit enter.\n");
 printf("The following are built in:\n");

@@ -8,6 +8,7 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include "builtins.h"
 
 
 #define BUFFER 1024
@@ -42,21 +43,5 @@ char *_read_line(void);
 char **_split_line(char *line);
 int _execute(char **args);
 int _launch(char **args);
-int _exit_(char **args);
-int _help(char **args);
-int _cd(char **args);
-int _num_builtins(void);
-
-char *builtin_str[] = {
-"cd",
-"help",
-"exit"
-};
-
-int (*builtin_func[])(char **) = {
-&_cd,
-&_help,
-&_exit_
-};
 
 #endif /* RKTSH_H */
