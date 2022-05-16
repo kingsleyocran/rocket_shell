@@ -5,7 +5,7 @@
  * Return: The line from stdin.
  */
 
-char *read_line(void)
+char *_read_line(void)
 {
 int bufsize = RKTSH_RL_BUFSIZE;
 int position = 0;
