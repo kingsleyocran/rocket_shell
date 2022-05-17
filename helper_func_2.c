@@ -8,41 +8,33 @@
  */
 int _atoi(char *s)
 {
-int i, d, n, len, f, digit;
+int number, i, neg;
 
-i = 0;
-d = 0;
-n = 0;
-len = 0;
-f = 0;
-digit = 0;
+neg = 1;
+i = number = 0;
 
-while (s[len] != '\0')
-len++;
-
-while (i < len && f == 0)
+while ((s[i] < '0' || s[i] > '9') && s[i] != 0)
 {
 if (s[i] == '-')
-++d;
-
-if (s[i] >= '0' && s[i] <= '9')
-{
-digit = s[i] - '0';
-if (d % 2)
-digit = -digit;
-n = n * 10 + digit;
-f = 1;
-if (s[i + 1] < '0' || s[i + 1] > '9')
-break;
-f = 0;
-}
+neg = neg * -1;
 i++;
 }
 
-if (f == 0)
-return (0);
-
-return (n);
+while ((s[i] >= '0' && s[i] <= '9') && s[i] != 0)
+{
+if (number >= 0)
+{
+number = number * 10 - (s[i] - '0');
+i++;
+}
+else
+{
+number = number * 10 - (s[i] - '0');
+i++;
+}
+}
+neg = neg * -1;
+return (number *neg);
 }
 
 /**
@@ -111,4 +103,32 @@ i++;
 dest[i] = '\0';
 
 return (dest);
+}
+
+
+
+/**
+ * word_count - counts words given a char delimiter
+ * @str: string of words
+ * Return: word count as unsigned int
+ */
+unsigned int word_count(char *str)
+{
+unsigned int i, wc, flag;
+char *delims = "\n \t";
+
+for (i = 0, wc = 1, flag = 0; str[i]; i++)
+{
+if (flag == 0 &&
+(str[i] == delims[0]
+|| str[i] == delims[1]
+|| str[i] == delims[2])
+&& str[i + 1] != delims[0]
+&& str[i + 1] != delims[1]
+&& str[i + 1] != delims[2])
+flag = 1, wc++;
+else
+flag = 0;
+}
+return (wc);
 }

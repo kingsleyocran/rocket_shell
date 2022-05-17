@@ -7,9 +7,9 @@
  */
 int _exit_(char **args)
 {
-if (args[2] == NULL)
+if (args[1] != NULL)
 {
-fprintf(stderr, "rktsh: expected argument to \"exit\"\n");
+fprintf(stderr, "rktsh: expected no argument to \"CDDD\"\n");
 }
 return (0);
 }

@@ -10,7 +10,7 @@ char **args;
 int status;
 
 do {
-printf(PROMPT);
+printf(RKTSH_PROMPT);
 line = _read_line();
 args = _split_line(line);
 status = _execute(args);
@@ -27,6 +27,6 @@ free(args);
  */
 int main(void)
 {
-shell_loop();
+shell_loop(); 
 return (EXIT_SUCCESS);
 }

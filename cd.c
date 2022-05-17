@@ -9,14 +9,23 @@ int _cd(char **args)
 {
 if (args[1] == NULL)
 {
-fprintf(stderr, "rktsh: expected argument to \"cd\"\n");
-}
-else
+const char *homedir;
+
+homedir = getenv("HOME");
+if (chdir(homedir) != 0)
 {
+perror("rktsh");
+}
+}
+else if (args[1] != NULL)
+{
+printf("%s", args[1]);
+
 if (chdir(args[1]) != 0)
 {
 perror("rktsh");
 }
+
 }
 return (1);
 }

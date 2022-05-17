@@ -17,7 +17,8 @@ fprintf(stderr, "rktsh: allocation error\n");
 exit(EXIT_FAILURE);
 }
 
-token = strtok(line, RKTSH_TOK_DELIM);
+token = search_token(line, RKTSH_TOK_DELIM);
+
 while (token != NULL)
 {
 tokens[position] = token;
@@ -31,14 +32,16 @@ tokens = realloc(tokens, bufsize *sizeof(char *));
 if (!tokens)
 {
 free(tokens_backup);
-fprintf(stderr, "lsh: allocation error\n");
+fprintf(stderr, "rktsh: allocation error\n");
 exit(EXIT_FAILURE);
 }
 }
 
-token = strtok(NULL, RKTSH_TOK_DELIM);
+token = search_token(NULL, RKTSH_TOK_DELIM);
+
 }
 
 tokens[position] = NULL;
 return (tokens);
 }
+
